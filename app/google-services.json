@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "861380758797",
+    "project_id": "rackmanager-48eb2",
+    "storage_bucket": "rackmanager-48eb2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:861380758797:android:68853676a716e96283f444",
+        "android_client_info": {
+          "package_name": "com.example.rackmanager"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByoaC8c36CZ8rrRYIcQ68sBC_bAl6_pHs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
