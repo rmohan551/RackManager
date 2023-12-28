@@ -1,10 +1,9 @@
 package com.example.rackmanager
 
+
 import androidx.room.Entity
-import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
-import java.util.Date
 
 
 @JsonClass(generateAdapter = true)
@@ -12,6 +11,9 @@ import java.util.Date
 data class RackEntity(
 
     @Json(name = "name")
-    val name: String,
+    val name: String?,
+
+    @Json(name = "date")
+    val date: String
 
 )
