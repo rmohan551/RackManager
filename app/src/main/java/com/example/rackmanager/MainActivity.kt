@@ -1,5 +1,7 @@
 package com.example.rackmanager
 
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -13,8 +15,9 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-
-class MainActivity:AppCompatActivity() {
+class MainActivity :
+    AppCompatActivity(),
+    DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
     private val apiService = RetrofitClient.apiService
     private val rackRepository = RackRepository(apiService)
@@ -34,10 +37,7 @@ class MainActivity:AppCompatActivity() {
 
         submitButton.setOnClickListener {
             lifecycleScope.launch {
-                // val id = "1"
-
                 val selectedRacks = mutableListOf<String>()
-
                 if (cbMGU.isChecked) {
                     selectedRacks.add("MGU")
                     Log.d("FirstActivity", "User selected MGU")
@@ -62,18 +62,51 @@ class MainActivity:AppCompatActivity() {
                 tvList.text = message
 
                 for (rackName in selectedRacks) {
-
                     try {
-                        val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault())
-                        val rackEntity = RackEntity(name = rackName, date = dateFormat.format(Date()) )
+                        val dateFormat =
+                            SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault())
+                        val rackEntity = RackEntity(name = rackName, date = dateFormat.format(Date()))
                         rackRepository.createRack(rackEntity)
                     } catch (e: Exception) {
                         Log.e("MainActivity", "Error creating rack: ${e.message}", e)
                     }
                 }
-            }
 
+                showDatePicker()
+            }
         }
     }
-}
 
+    //Implement date picker
+    private fun showDatePicker() {
+        val datePickerFragment = DatePickerDialog(
+            this,
+            this,
+            2023,
+            0,
+            1
+        )
+        datePickerFragment.show()
+    }
+
+    override fun onDateSet(view: android.widget.DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
+        val selectedDate = "$year-${month + 1}-$dayOfMonth"
+        showTimePicker()
+    }
+
+    //Implement time picker
+    private fun showTimePicker() {
+        val timePickerFragment = TimePickerDialog(
+            this,
+            this,
+            12,
+            0,
+            false
+        )
+        timePickerFragment.show()
+    }
+
+    override fun onTimeSet(view: android.widget.TimePicker?, hourOfDay: Int, minute: Int) {
+        val selectedTime = "$hourOfDay:$minute"
+    }
+    }
