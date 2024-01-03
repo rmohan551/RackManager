@@ -89,6 +89,7 @@ class MainActivity :
         datePickerFragment.show()
     }
 
+    //Implement the onDateSet
     override fun onDateSet(view: android.widget.DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
         val selectedDate = "$year-${month + 1}-$dayOfMonth"
         showTimePicker()
@@ -106,6 +107,7 @@ class MainActivity :
         timePickerFragment.show()
     }
 
+    //Implement the onTimeSet
     override fun onTimeSet(view: android.widget.TimePicker?, hourOfDay: Int, minute: Int) {
         val selectedTime = "$hourOfDay:$minute"
     }
