@@ -11,9 +11,6 @@ import com.squareup.moshi.JsonClass
 data class RackEntity(
 
     @Json(name = "name")
-    val name: String?,
-
-    @Json(name = "date")
-    val date: String
+    val name: String?
 
 )

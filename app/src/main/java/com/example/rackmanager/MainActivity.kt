@@ -12,7 +12,6 @@ import androidx.lifecycle.lifecycleScope
 import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
-import java.util.Date
 import java.util.Locale
 
 class MainActivity :
@@ -65,7 +64,7 @@ class MainActivity :
                     try {
                         val dateFormat =
                             SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault())
-                        val rackEntity = RackEntity(name = rackName, date = dateFormat.format(Date()))
+                        val rackEntity = RackEntity(name = rackName,)
                         rackRepository.createRack(rackEntity)
                     } catch (e: Exception) {
                         Log.e("MainActivity", "Error creating rack: ${e.message}", e)
