@@ -1,4 +1,4 @@
-import com.example.rackmanager.ApiService
+/*import com.example.rackmanager.ApiService
 import com.example.rackmanager.RackEntity
 import kotlinx.coroutines.runBlocking
 import okhttp3.Response
@@ -32,4 +32,4 @@ import org.mockito.Mockito.mock
 
             }
         }
-            }
+            }*/

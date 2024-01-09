@@ -66,6 +66,14 @@ class MainActivity :
                             SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault())
                         val rackEntity = RackEntity(name = rackName,)
                         rackRepository.createRack(rackEntity)
+
+
+                        var startTime: Long = 0
+
+                        val endTime = System.currentTimeMillis()
+                        val executionTime = endTime - startTime
+
+                        Log.d("MainActivity", "Time to create rack: $executionTime ms")
                     } catch (e: Exception) {
                         Log.e("MainActivity", "Error creating rack: ${e.message}", e)
                     }
